@@ -71,6 +71,8 @@ public class TPSMove : MonoBehaviour
     void FixedUpdate()
     {
 
+        if (GameManager.IsPaused) return; 
+
         Vector2 moveInput = moveaction && moveaction.action != null
             ? moveaction.action.ReadValue<Vector2>()
             : Vector2.zero;
@@ -116,7 +118,8 @@ public class TPSMove : MonoBehaviour
     private void Jump(InputAction.CallbackContext context)
     {
         // Adds force to the player rigidbody to jump
-        if (IsGrounded())
+        Debug.Log("User jumps: IsGrounded: " + isGrounded);
+        if (IsGrounded() && !GameManager.IsPaused)
         {
             // Debug.Log("User jumps: IsGrounded");
             rb.AddForce(0f, jumpPower, 0f, ForceMode.Impulse);
@@ -126,6 +129,7 @@ public class TPSMove : MonoBehaviour
     
     private bool IsGrounded()
     {
-        return Physics.Raycast(transform.position, Vector3.down, groundCheckDistance, groundMask);
+        return true; 
+        //return Physics.Raycast(transform.position, Vector3.down, groundCheckDistance, groundMask);
     }
 }

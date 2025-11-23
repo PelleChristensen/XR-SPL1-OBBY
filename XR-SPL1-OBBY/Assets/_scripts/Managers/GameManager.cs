@@ -8,22 +8,35 @@ public class GameManager : MonoBehaviour
 
     public static UnityAction<EventType> gamestatechange;
 
+    public static bool IsPaused = true; 
+
     void Awake()
     {
         CountDown.countevent += OnCountEvent;
-        Player.playerstate += OnPlayerStateChanged; 
+        Player.playerstate += OnPlayerStateChanged;
+        MainMenuController.mainmenumessages += OnMainMenuMessage;
+
+        IsPaused = true; 
     }
 
     void OnEnable()
     {
         CountDown.countevent += OnCountEvent;
         Player.playerstate += OnPlayerStateChanged; 
+        MainMenuController.mainmenumessages += OnMainMenuMessage; 
     }
 
     void OnDisable()
     {
         CountDown.countevent -= OnCountEvent;
-        Player.playerstate -= OnPlayerStateChanged;         
+        Player.playerstate -= OnPlayerStateChanged;
+        MainMenuController.mainmenumessages -= OnMainMenuMessage; 
+    }
+
+    private void OnMainMenuMessage(MainMenuController.UIMessage msg)
+    {
+        gamestatechange.Invoke(EventType.START);
+        IsPaused = false; 
     }
 
     private void OnPlayerStateChanged(Player.PlayerState newstate)
@@ -33,6 +46,7 @@ public class GameManager : MonoBehaviour
         {
             case Player.PlayerState.DEAD:
                 gamestatechange.Invoke(EventType.GAMEOVER);
+                IsPaused = true; 
                 break;
             case Player.PlayerState.ARRIVED:
                 gamestatechange.Invoke(EventType.GAMECOMPLETE);

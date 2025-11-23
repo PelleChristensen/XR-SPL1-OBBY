@@ -262,8 +262,8 @@ MonoBehaviour:
   minPitch: -60
   maxPitch: 60
   invertY: 0
-  lockCursor: 1
-  lookAction: {fileID: -5630151704836100654, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  lockCursor: 0
+  lookAction: {fileID: 8504285761711534305, guid: a5d14469f573e9a47a3f0663c76188de, type: 3}
 --- !u!114 &1938061046608973792
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -278,9 +278,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   character: {fileID: 3007066368825600778}
   rb: {fileID: 1430131978331211240}
-  moveaction: {fileID: -1680190386980627800, guid: 052faaac586de48259a63d0c4782560b, type: 3}
-  jumpaction: {fileID: -2099379676528639254, guid: 052faaac586de48259a63d0c4782560b, type: 3}
-  sprintaction: {fileID: -7471211009204490832, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  moveaction: {fileID: 7132926653363717301, guid: a5d14469f573e9a47a3f0663c76188de, type: 3}
+  jumpaction: {fileID: -2344270060053075580, guid: a5d14469f573e9a47a3f0663c76188de, type: 3}
+  sprintaction: {fileID: 8504285761711534305, guid: a5d14469f573e9a47a3f0663c76188de, type: 3}
   animator: {fileID: 0}
   moveForce: 10
   forceMode: 0
