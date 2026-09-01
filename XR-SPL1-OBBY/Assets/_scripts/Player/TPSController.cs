@@ -57,7 +57,7 @@ public class TPSController : MonoBehaviour
     void Update()
     {
         if (GameManager.IsPaused) return; 
-        
+
         Vector2 look = lookAction.action.ReadValue<Vector2>();
 
         float ySign = invertY ? 1f : -1f; // typical FPS-style: move mouse up => look up (negative pitch)
